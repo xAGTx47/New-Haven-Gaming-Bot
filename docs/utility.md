@@ -1,5 +1,7 @@
 # 🔧 Utility Commands
 
+![Utility Banner](images/utility-banner.png)
+
 Server information and member stat tracking.
 
 ---
