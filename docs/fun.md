@@ -1,5 +1,7 @@
 # 🎉 Fun Commands
 
+![Fun Banner](images/fun-banner.png)
+
 Lighthearted commands for entertainment.
 
 ---
