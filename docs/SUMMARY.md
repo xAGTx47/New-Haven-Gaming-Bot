@@ -6,5 +6,4 @@
 * [Fun](fun.md)
 * [Images](images.md)
 * [Utility](utility.md)
-* [Moderation](moderation.md)
 * [Changelog](changelog.md)
