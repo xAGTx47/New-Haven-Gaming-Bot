@@ -1,5 +1,7 @@
 # 💰 Economy Commands
 
+![Economy Banner](images/economy-banner.png)
+
 Commands for earning, spending, and managing coins.
 
 ---
