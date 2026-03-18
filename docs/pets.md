@@ -1,5 +1,7 @@
 # 🐾 Pet Commands
 
+![Pets Banner](images/pets-banner.png)
+
 Adopt and care for a companion pet. All pet interactions live under the `/pet` command.
 
 ---
