@@ -1,6 +1,6 @@
-# Summary
+# Table of contents
 
-* [Getting Started](getting-started.md)
+* [Getting Started](README.md)
 * [💰 Economy](economy.md)
 * [🐾 Pets](pets.md)
 * [🎉 Fun](fun.md)
