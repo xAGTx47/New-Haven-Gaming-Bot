@@ -6,4 +6,4 @@
 * [🎉 Fun](fun.md)
 * [🖼️ Images](images.md)
 * [🔧 Utility](utility.md)
-* [Changelog](changelog.md)
+* [📋 Changelog](changelog.md)
