@@ -44,6 +44,14 @@ A new optional `position` field on `/shopadd` lets you place new items at a spec
 
 ---
 
+### `/vc` — Public "No Custom VC" Error for Non-Owners
+
+Members who run any `/vc` command without owning a Custom VC now receive a public embed (visible to everyone in the channel) explaining they need to buy one. The embed shows the price, that no previous tier is required, and reminds them to use `/buy Custom VC` with an optional channel name.
+
+`/vc help`, `/vc host`, and `/vc setup` are unaffected — they work for anyone as before.
+
+---
+
 ### `/vc help` — Now Posts Publicly
 
 `/vc help` no longer sends an ephemeral (private) reply. The embed is now posted publicly so everyone in the channel can see it.
