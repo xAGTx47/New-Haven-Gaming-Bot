@@ -2,6 +2,44 @@
 
 ---
 
+## Session — March 19, 2026 (continued)
+
+### Music — Audio Bleed Between Songs Fixed
+
+Brief clips of the next queued song could be heard while the current song was still playing. The root cause was the audio player's `maxMissedFrames` threshold being set to the library default of **5 frames (100ms)**. Any brief yt-dlp or FFmpeg pipeline hiccup longer than 100ms — a network round-trip, a codec flush, a short buffer stall — would trigger the end-of-song logic mid-track, starting the next queued song prematurely.
+
+**Fixes applied:**
+- `maxMissedFrames` raised from 5 (100ms) to **250 (5 seconds)** — brief pipeline hiccups no longer cause premature song advancement
+- `/skip` now **force-stops** the player (`stop(true)`) and immediately kills the yt-dlp process, eliminating any residual audio in the transition gap between songs
+
+---
+
+### Music — `/help` Tab Added
+
+A **🎵 Music** category has been added to the `/help` dropdown, placed between Images and Utility. All 12 music commands are listed with descriptions:
+
+`/play`, `/pause`, `/resume`, `/skip`, `/stop`, `/queue`, `/nowplaying`, `/loop`, `/volume`, `/seek`, `/remove`, `/shuffle`
+
+---
+
+### Music System — Now Working (Voice Connection Fixed)
+
+The music system is now fully functional. The root cause of the voice connection failure was `@discordjs/voice` using **voice protocol v4** (version 0.18.x), which produced a WebSocket handshake timing issue on Replit's network — the bot sent `Identify` before Discord's voice server could send `Hello`, causing the connection to be rejected immediately.
+
+**Fix:** Upgraded `@discordjs/voice` from 0.18.0 to **0.19.2**, which uses voice protocol **v8**. The handshake now completes cleanly on the first attempt.
+
+**Additional fix:** The dev bot (running in the Replit workspace) and the deployed bot were both active at the same time. Since both share the same token and user ID, they were competing for the same Discord voice sessions, invalidating each other's connections (Discord close code 4006). The dev workflow has been permanently disabled (`echo bot-disabled`, `autoStart: false`) so only the deployed bot runs.
+
+**Confirmed working:**
+- Voice connects on the first try every time
+- YouTube search queries and direct URLs both play
+- Queue, loop, skip, volume, and all other music commands function correctly
+- Bot stays in the voice channel after the queue empties
+
+See the [Music](music.md) page for the full command reference.
+
+---
+
 ## Session — March 19, 2026
 
 ### Custom Voice Channels (`/vc`)
