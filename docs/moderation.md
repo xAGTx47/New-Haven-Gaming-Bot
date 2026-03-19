@@ -85,7 +85,7 @@ All posting commands use a guided flow: select a channel → choose a ping → f
 
 | Command | Permission | Description |
 |---|---|---|
-| `/vc setup category: <category>` | Administrator | Set the category where member custom VCs are created. Must be run once before members can buy a Custom VC |
+| `/vc setup category: <category>` | Bot Owner | Set the category where member custom VCs are created. Must be run once before members can buy a Custom VC |
 
 ---
 
