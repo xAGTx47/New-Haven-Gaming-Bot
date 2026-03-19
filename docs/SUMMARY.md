@@ -5,6 +5,7 @@
 * [🐾 Pets](pets.md)
 * [🎉 Fun](fun.md)
 * [🖼️ Images](images.md)
+* [🎵 Music](music.md)
 * [🔧 Utility](utility.md)
 * [🔊 Custom Voice Channels](custom-vc.md)
 * [📋 Changelog](changelog.md)
