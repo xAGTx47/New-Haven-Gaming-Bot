@@ -6,7 +6,13 @@ Members can purchase a permanent custom voice channel from the server shop and m
 
 ## Buying a Custom VC
 
-Purchase the **Custom VC** item from the shop with `/buy Custom VC`. The channel is created instantly in the designated category. Only one custom VC per member is allowed at a time.
+Purchase the **Custom VC** item from the shop with `/buy`. You can name the channel right in the command using the optional `channel-name` field — if you skip it, it defaults to `username's VC`. The channel is created instantly in the designated category. Only one custom VC per member is allowed at a time.
+
+**Examples:**
+- `/buy item:Custom VC channel-name:Late Night Lounge` — creates a VC named "Late Night Lounge"
+- `/buy item:Custom VC` — creates a VC named after your username
+
+You can rename it any time with `/vc name`.
 
 ---
 
