@@ -50,7 +50,7 @@ Gathering commands produce items that sit in your inventory until you sell them.
 | Command | Description |
 |---|---|
 | `/shop` | Browse the server shop |
-| `/buy <item>` | Purchase an item from the shop — it goes into your inventory |
+| `/buy <item> [channel-name]` | Purchase an item from the shop — it goes into your inventory. When buying a Custom VC, the optional `channel-name` field sets the VC's name |
 
 > **Custom VC** is a special shop item. Buying it instantly creates a permanent voice channel assigned to you. See [Custom Voice Channels](custom-vc.md) for full details.
 
