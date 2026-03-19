@@ -75,9 +75,17 @@ All posting commands use a guided flow: select a channel → choose a ping → f
 
 | Command | Permission | Description |
 |---|---|---|
-| `/shopadd <name> <price> <desc>` | Bot Owner | Add a new item to the server shop |
+| `/shopadd <name> <price> [desc] [position]` | Bot Owner | Add a new item to the server shop. Use `position` to insert it at a specific slot — everything else shifts down |
 | `/shopedit <item> [name] [price] [desc]` | Manage Guild | Edit an existing shop item — provide only the fields you want to change |
 | `/shopremove <name>` | Manage Guild | Remove an item from the shop permanently |
+
+---
+
+## Custom Voice Channel Admin
+
+| Command | Permission | Description |
+|---|---|---|
+| `/vc setup category: <category>` | Administrator | Set the category where member custom VCs are created. Must be run once before members can buy a Custom VC |
 
 ---
 
