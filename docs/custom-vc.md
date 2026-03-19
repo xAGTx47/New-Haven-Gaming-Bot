@@ -76,7 +76,7 @@ These actions affect **only your voice channel** — they have zero impact on th
 | `/vc info` | Show your channel's current settings |
 | `/vc view` | Show a channel overview and link |
 | `/vc host [channel]` | See who owns a custom VC — defaults to your current VC |
-| `/vc invite` | Generate a one-hour invite link (max 10 uses) |
+| `/vc invite <user>` | Add a member to your channel permissions so they can join |
 | `/vc reset` | Reset your channel to default name, size, bitrate, and clear all overwrites |
 | `/vc transfer <user>` | Hand ownership to another member — Priority Speaker moves with it |
 
