@@ -26,6 +26,12 @@ The weekly voice time counter now resets every **Sunday at midnight Eastern Time
 
 ---
 
+### `/buy` — Custom VC Naming on Purchase
+
+When buying a **Custom VC** from the shop, members can now set the channel name directly in the buy command using the optional `channel-name` field. If skipped, the channel is named `username's VC`. The name can be changed any time with `/vc name`.
+
+---
+
 ### `/shopadd` — Position Option Added
 
 A new optional `position` field on `/shopadd` lets you place new items at a specific slot in the shop list rather than always appending to the end. Example: `position: 5` inserts the item at slot 5 and shifts everything else down.
