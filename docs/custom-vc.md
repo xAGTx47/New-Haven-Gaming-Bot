@@ -38,6 +38,8 @@ Switch modes at any time with `/vc privacy`.
 
 All commands require you to be inside **your own custom VC** to work, except `/vc help` and `/vc host` which work anywhere. `/vc help` posts the embed publicly so everyone in the channel can see it.
 
+> **Don't own a Custom VC yet?** If you try to use any `/vc` command without owning one, the bot will reply publicly with an embed explaining how to get one. Everyone in the channel will see it.
+
 ### ⚙️ Settings
 
 | Command | Description |
