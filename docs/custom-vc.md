@@ -36,7 +36,7 @@ Switch modes at any time with `/vc privacy`.
 
 ## Command Reference
 
-All commands require you to be inside **your own custom VC** to work, except `/vc help` and `/vc host` which work anywhere.
+All commands require you to be inside **your own custom VC** to work, except `/vc help` and `/vc host` which work anywhere. `/vc help` posts the embed publicly so everyone in the channel can see it.
 
 ### ⚙️ Settings
 
