@@ -44,6 +44,25 @@ A new optional `position` field on `/shopadd` lets you place new items at a spec
 
 ---
 
+### `/vc help` — Now Posts Publicly
+
+`/vc help` no longer sends an ephemeral (private) reply. The embed is now posted publicly so everyone in the channel can see it.
+
+---
+
+### `/help` — Custom VC Added as First Category
+
+The **🔊 Custom VC** category has been added to the `/help` dropdown and placed first in the list. The full order is now: Custom VC → Economy → Pets → Fun → Images → Utility → Moderation.
+
+---
+
+### Shop — Footer and Custom VC Description Updated
+
+- Footer wording corrected to "previous **item**" (was "previous tier")
+- Custom VC shop description now shows **No previous tier required.** in bold to make it clear it can be purchased at any time without unlocking prior tiers
+
+---
+
 ## Session — March 18, 2026
 
 ### Command Consolidation (Slash Command Slot Reduction)
