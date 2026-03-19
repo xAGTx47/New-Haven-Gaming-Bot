@@ -44,6 +44,12 @@ A new optional `position` field on `/shopadd` lets you place new items at a spec
 
 ---
 
+### `/vc setup` — Restricted to Bot Owner
+
+`/vc setup` was previously gated on **Manage Server** permission. It is now restricted to the **bot owner only**, preventing any server administrator from changing the VC category.
+
+---
+
 ### `/vc` — Public "No Custom VC" Error for Non-Owners
 
 Members who run any `/vc` command without owning a Custom VC now receive a public embed (visible to everyone in the channel) explaining they need to buy one. The embed shows the price, that no previous tier is required, and reminds them to use `/buy Custom VC` with an optional channel name.
