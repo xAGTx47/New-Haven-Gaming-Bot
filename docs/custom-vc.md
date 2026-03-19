@@ -86,4 +86,4 @@ These actions affect **only your voice channel** — they have zero impact on th
 
 ## Admin Setup
 
-Run `/vc setup category: <category>` to set the server category where purchased VCs are created. Requires **Manage Server** permission.
+Run `/vc setup category: <category>` to set the server category where purchased VCs are created. Requires **Bot Owner** only.
