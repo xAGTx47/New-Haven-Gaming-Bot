@@ -26,6 +26,12 @@ The weekly voice time counter now resets every **Sunday at midnight Eastern Time
 
 ---
 
+### `/vc invite` — Now Adds Member to Channel Permissions
+
+`/vc invite <user>` no longer generates a Discord invite URL. It now adds the specified member directly to the voice channel's Advanced Permissions (granting `ViewChannel` and `Connect`), identical to `/vc add`. The member is also saved to the guestlist so they retain access if the channel is set to private.
+
+---
+
 ### `/buy` — Custom VC Naming on Purchase
 
 When buying a **Custom VC** from the shop, members can now set the channel name directly in the buy command using the optional `channel-name` field. If skipped, the channel is named `username's VC`. The name can be changed any time with `/vc name`.
