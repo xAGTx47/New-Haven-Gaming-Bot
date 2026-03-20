@@ -78,6 +78,7 @@ All posting commands use a guided flow: select a channel → choose a ping → f
 | `/shopadd <name> <price> [desc] [position]` | Bot Owner | Add a new item to the server shop. Use `position` to insert it at a specific slot — everything else shifts down |
 | `/shopedit <item> [name] [price] [desc]` | Manage Guild | Edit an existing shop item — provide only the fields you want to change |
 | `/shopremove <name>` | Manage Guild | Remove an item from the shop permanently |
+| `/shopmove <item> <position>` | Manage Guild | Move an existing shop item to a different position in the list — everything else shifts to accommodate |
 
 ---
 
