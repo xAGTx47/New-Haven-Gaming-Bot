@@ -33,11 +33,18 @@ Gathering commands produce items that sit in your inventory until you sell them.
 
 ---
 
-## Wallet & Inventory
+## Wallet & Bank
+
+Your coins are split across two places:
+
+- **Wallet** — coins here are at risk of being stolen via `/rob`
+- **Bank** — coins here are completely safe from robbery
 
 | Command | Description |
 |---|---|
-| `/balance [user]` | Check your coin balance, or another member's |
+| `/balance [user]` | Check your wallet, bank, and total balance — also shows if you have a Rob Shield active |
+| `/deposit <amount>` | Move coins from your wallet into your bank |
+| `/withdraw <amount\|all>` | Move coins from your bank back to your wallet |
 | `/inventory [user]` | View your inventory, or another member's |
 | `/give <user> <amount>` | Send coins directly to another member |
 | `/giveitem <user> <item>` | Give an inventory item to another member |
@@ -53,6 +60,34 @@ Gathering commands produce items that sit in your inventory until you sell them.
 | `/buy <item> [channel-name]` | Purchase an item from the shop — it goes into your inventory. When buying a Custom VC, the optional `channel-name` field sets the VC's name |
 
 > **Custom VC** is a special shop item. Buying it instantly creates a permanent voice channel assigned to you. See [Custom Voice Channels](custom-vc.md) for full details.
+
+### Shop Items
+
+| Item | Price | Effect |
+|---|---|---|
+| Rob Shield | 🪙 500 | Automatically blocks the next `/rob` attempt against you. Consumed when triggered. Shows on `/balance`. |
+| Lockpick | 🪙 200 | Use with `/rob lockpick:true` to bypass a target's Rob Shield. Consumed on use. |
+| Spy | 🪙 400 | Use `/spy <user>` to secretly check someone's wallet balance. Result is only visible to you. Consumed on use. |
+
+---
+
+## Robbery
+
+| Command | Description |
+|---|---|
+| `/rob <user> [lockpick]` | Attempt to steal 100–500 coins from another member's **wallet** — 50/50 chance of success. Set `lockpick:true` to use a Lockpick and bypass their Rob Shield if they have one. |
+| `/spy <user>` | Secretly check someone's wallet balance (requires a **Spy** item — consumed on use). Only you can see the result. |
+| `/roblb` | View the robbery leaderboard — top robbers ranked by total coins stolen, and most robbed victims. |
+
+### How robbery works
+
+1. **Target's wallet must have at least 100 coins** — bank coins are completely safe
+2. **50% win / 50% fail:**
+   - **Win** → steal 100–500 coins from their wallet; victim is DM'd
+   - **Fail** → you pay the victim 100–300 coins in compensation, and you go to **jail** for 15–30 minutes
+3. **Rob Shield** — if the target has a Rob Shield in their inventory, it automatically blocks the rob and is consumed. You can bypass it by spending a **Lockpick** (`/rob lockpick:true`)
+4. **Jail** — while in jail you cannot use: `/rob`, `/crime`, `/bankrob`, `/work`, `/daily`, `/weekly`, `/monthly`, `/beg`, `/fish`, `/hunt`, `/mine`, `/sell`, `/sellall`, or any gambling command. `/balance`, `/deposit`, `/withdraw`, `/shop`, and `/buy` still work.
+5. **DM notifications** — the victim always receives a DM: when robbed, when their shield blocks an attempt, or when a robber fails and pays them
 
 ---
 
