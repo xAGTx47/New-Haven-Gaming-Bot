@@ -2,6 +2,43 @@
 
 ---
 
+## Session — March 20, 2026 (continued)
+
+### Shop Price Adjustments
+
+Rebalanced the robbery shop items for better economy fairness:
+
+| Item | Old Price | New Price |
+|---|---|---|
+| Rob Shield | 🪙 500 | 🪙 500 (unchanged) |
+| Lockpick | 🪙 200 | 🪙 600 |
+| Spy | 🪙 400 | 🪙 250 |
+
+The Lockpick price was raised so bypassing a Rob Shield costs at least as much as placing one. The Spy price was lowered to encourage use — checking a wallet is useful info but not powerful enough to justify a near-daily cost.
+
+---
+
+### `/roleadd` — Multi-Role & All Members Support
+
+`/roleadd` has been expanded significantly:
+
+- **Up to 5 roles at once** — `role1` through `role5` (role1 is required, the rest are optional). All roles are validated against bot and caller hierarchy before any are applied.
+- **All members** — set `all_members: True` to apply every selected role to the entire server. The bot fetches all members, skips anyone who already has all the roles, and posts a summary embed showing how many were updated, skipped, and failed.
+- **Bulk summary embed** — when applying to all members, the reply shows updated / skipped / failed counts instead of a per-member breakdown.
+
+---
+
+### `/post` — Management Footer
+
+All three post types (`/post update`, `/post announce`, `/post botupdates`) now show a fixed footer on every embed:
+
+- **Icon** — the avatar of whoever ran the command
+- **Text** — `Management: {their server display name}`
+
+The optional footer text field has been removed from the modal — the footer is now set automatically. The modal now has three fields: Title, Body, and Image URL.
+
+---
+
 ## v2.0.0 — March 20, 2026
 
 The bot has been bumped to **version 2.0.0** to reflect the scale of changes made since launch. The command count grew from a loose collection of commands to a structured system of **89 slash commands**. Major systems added include a full economy overhaul (bank, robbery, jail, shop items), Custom Voice Channels (21 subcommands), pets, poker, horse racing, bank robbery, and a complete moderation suite. The music system was trialled and removed due to platform limitations.
@@ -29,13 +66,13 @@ DMs fail gracefully if the victim has them closed — no errors are thrown.
 
 ---
 
-### Lockpick — New Shop Item (🪙 200)
+### Lockpick — New Shop Item (🪙 600)
 
 A **Lockpick** can be bought from the shop. When using `/rob`, an optional `lockpick:true` flag appears. If the target has a Rob Shield and you have a Lockpick and set the flag, the lockpick is consumed and the shield is bypassed — the rob proceeds normally. Without the flag (or without a lockpick), the shield blocks as normal.
 
 ---
 
-### Spy — New Shop Item & Command (🪙 400)
+### Spy — New Shop Item & Command (🪙 250)
 
 A **Spy** item can be bought from the shop. Using `/spy <user>` consumes the item and reveals the target's current wallet balance in an ephemeral reply only you can see. Works on any member; cannot target yourself or bots.
 
