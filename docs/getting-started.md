@@ -82,8 +82,8 @@ Members can rob each other's **wallets** using `/rob`. To protect yourself, buy 
 | Item | Price | What it does |
 |---|---|---|
 | **Rob Shield** | 🪙 500 | Automatically blocks the next robbery attempt against you. Consumed when triggered. Shows on `/balance`. |
-| **Lockpick** | 🪙 200 | Use `/rob lockpick:true` to bypass a target's Rob Shield. Consumed on use. |
-| **Spy** | 🪙 400 | Use `/spy <user>` to secretly check someone's wallet. Only you see the result. Consumed on use. |
+| **Lockpick** | 🪙 600 | Use `/rob lockpick:true` to bypass a target's Rob Shield. Consumed on use. |
+| **Spy** | 🪙 250 | Use `/spy <user>` to secretly check someone's wallet. Only you see the result. Consumed on use. |
 
 > **Bank coins are always safe.** Only wallet coins can be stolen. Deposit your coins when you're not actively using them.
 
