@@ -2,41 +2,66 @@
 
 ---
 
-## Session — March 19, 2026 (continued)
+## Session — March 20, 2026
 
-### Music — Audio Bleed Between Songs Fixed
+### Jail System
 
-Brief clips of the next queued song could be heard while the current song was still playing. The root cause was the audio player's `maxMissedFrames` threshold being set to the library default of **5 frames (100ms)**. Any brief yt-dlp or FFmpeg pipeline hiccup longer than 100ms — a network round-trip, a codec flush, a short buffer stall — would trigger the end-of-song logic mid-track, starting the next queued song prematurely.
-
-**Fixes applied:**
-- `maxMissedFrames` raised from 5 (100ms) to **250 (5 seconds)** — brief pipeline hiccups no longer cause premature song advancement
-- `/skip` now **force-stops** the player (`stop(true)`) and immediately kills the yt-dlp process, eliminating any residual audio in the transition gap between songs
+Getting caught during a `/rob` now sends you to jail for a random **15–30 minutes**. While in jail every coin-earning command is locked: `/rob`, `/crime`, `/bankrob`, `/work`, `/daily`, `/weekly`, `/monthly`, `/beg`, `/fish`, `/hunt`, `/mine`, `/sell`, `/sellall`, and all gambling commands. The failed rob embed shows a Discord timestamp for your exact release time. Viewing your balance, depositing, withdrawing, shopping, and buying still work normally.
 
 ---
 
-### Music — `/help` Tab Added
+### Rob Notifications (DMs)
 
-A **🎵 Music** category has been added to the `/help` dropdown, placed between Images and Utility. All 12 music commands are listed with descriptions:
+The victim of a rob attempt now always receives a DM:
+- **Successful rob** — told who robbed them and how many coins were taken
+- **Failed rob** — told who tried and how much compensation they received
+- **Shield blocked** — told whose attempt was blocked and that the shield was consumed
 
-`/play`, `/pause`, `/resume`, `/skip`, `/stop`, `/queue`, `/nowplaying`, `/loop`, `/volume`, `/seek`, `/remove`, `/shuffle`
+DMs fail gracefully if the victim has them closed — no errors are thrown.
 
 ---
 
-### Music System — Now Working (Voice Connection Fixed)
+### Lockpick — New Shop Item (🪙 200)
 
-The music system is now fully functional. The root cause of the voice connection failure was `@discordjs/voice` using **voice protocol v4** (version 0.18.x), which produced a WebSocket handshake timing issue on Replit's network — the bot sent `Identify` before Discord's voice server could send `Hello`, causing the connection to be rejected immediately.
+A **Lockpick** can be bought from the shop. When using `/rob`, an optional `lockpick:true` flag appears. If the target has a Rob Shield and you have a Lockpick and set the flag, the lockpick is consumed and the shield is bypassed — the rob proceeds normally. Without the flag (or without a lockpick), the shield blocks as normal.
 
-**Fix:** Upgraded `@discordjs/voice` from 0.18.0 to **0.19.2**, which uses voice protocol **v8**. The handshake now completes cleanly on the first attempt.
+---
 
-**Additional fix:** The dev bot (running in the Replit workspace) and the deployed bot were both active at the same time. Since both share the same token and user ID, they were competing for the same Discord voice sessions, invalidating each other's connections (Discord close code 4006). The dev workflow has been permanently disabled (`echo bot-disabled`, `autoStart: false`) so only the deployed bot runs.
+### Spy — New Shop Item & Command (🪙 400)
 
-**Confirmed working:**
-- Voice connects on the first try every time
-- YouTube search queries and direct URLs both play
-- Queue, loop, skip, volume, and all other music commands function correctly
-- Bot stays in the voice channel after the queue empties
+A **Spy** item can be bought from the shop. Using `/spy <user>` consumes the item and reveals the target's current wallet balance in an ephemeral reply only you can see. Works on any member; cannot target yourself or bots.
 
-See the [Music](music.md) page for the full command reference.
+---
+
+### Robbery Leaderboard — `/roblb`
+
+A new `/roblb` command shows two leaderboards side-by-side:
+- **Top Robbers** — ranked by total coins stolen across all successful robs
+- **Most Robbed** — ranked by number of times successfully robbed
+
+Stats are tracked persistently in `data/robstats.json` and accumulate across bot restarts.
+
+---
+
+### `/balance` — Rob Shield Indicator
+
+If you (or the user you're checking) have a **Rob Shield** in your inventory, `/balance` now shows **🛡️ Rob Shield active** next to your name in the embed.
+
+---
+
+### `/shopmove` — Reorder Shop Items
+
+A new `/shopmove <item> <position>` command lets staff move any shop item to a specific position in the list without having to remove and re-add it. Requires **Manage Server** permission.
+
+---
+
+### Bank System — `/deposit` & `/withdraw`
+
+Your coin balance is now split into two pockets:
+- **Wallet** — at risk from `/rob`
+- **Bank** — completely safe; thieves cannot touch it
+
+Use `/deposit <amount>` to move coins into the bank and `/withdraw <amount|all>` to pull them back out. The `/balance` command shows both values plus a combined total.
 
 ---
 
