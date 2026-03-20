@@ -13,7 +13,7 @@
 | `/unban <user_id>` | Ban Members | Unban a previously banned user by their Discord ID |
 | `/timeout <user> <duration> [reason]` | Moderate Members | Temporarily restrict a member from sending messages |
 | `/setnick <user> [nickname]` | Manage Nicknames | Change a member's server nickname. Leave nickname blank to reset it |
-| `/roleadd <user> <role>` | Manage Roles | Add a role to a member |
+| `/roleadd <role1> [role2–5] [user] [all_members]` | Manage Roles | Add up to 5 roles to a specific member, or to every member in the server at once |
 
 ---
 
@@ -66,8 +66,8 @@ All posting commands use a guided flow: select a channel → choose a ping → f
 1. Run `/post <type>`
 2. Select the channel to post in
 3. Choose who to ping (pick a role, @everyone, @here, or no ping)
-4. Fill in the title, body, optional image URL, and optional footer in the modal
-5. The embed is posted — done
+4. Fill in the title, body, and optional image URL in the modal
+5. The embed is posted — the footer is automatically set to your avatar and display name
 
 ---
 
