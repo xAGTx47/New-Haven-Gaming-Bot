@@ -66,8 +66,8 @@ Your coins are split across two places:
 | Item | Price | Effect |
 |---|---|---|
 | Rob Shield | 🪙 500 | Automatically blocks the next `/rob` attempt against you. Consumed when triggered. Shows on `/balance`. |
-| Lockpick | 🪙 200 | Use with `/rob lockpick:true` to bypass a target's Rob Shield. Consumed on use. |
-| Spy | 🪙 400 | Use `/spy <user>` to secretly check someone's wallet balance. Result is only visible to you. Consumed on use. |
+| Lockpick | 🪙 600 | Use with `/rob lockpick:true` to bypass a target's Rob Shield. Consumed on use. |
+| Spy | 🪙 250 | Use `/spy <user>` to secretly check someone's wallet balance. Result is only visible to you. Consumed on use. |
 
 ---
 
