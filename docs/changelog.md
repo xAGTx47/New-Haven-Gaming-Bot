@@ -2,6 +2,14 @@
 
 ---
 
+## v2.0.0 — March 20, 2026
+
+The bot has been bumped to **version 2.0.0** to reflect the scale of changes made since launch. The command count grew from a loose collection of commands to a structured system of **89 slash commands**. Major systems added include a full economy overhaul (bank, robbery, jail, shop items), Custom Voice Channels (21 subcommands), pets, poker, horse racing, bank robbery, and a complete moderation suite. The music system was trialled and removed due to platform limitations.
+
+`/bot info` now shows **v2.0.0**.
+
+---
+
 ## Session — March 20, 2026
 
 ### Jail System
