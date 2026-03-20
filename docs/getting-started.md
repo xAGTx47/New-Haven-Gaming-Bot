@@ -66,10 +66,36 @@ Several commands let you wager coins for a chance at bigger rewards:
 - **`/give <user> <amount>`** — Send coins directly to another member
 - **`/giveitem <user> <item>`** — Give an inventory item to someone
 
+### Your Wallet & Bank
+
+Coins are split between two places:
+
+- **Wallet** — coins here are at risk from `/rob`. Shown in `/balance`.
+- **Bank** — completely safe. Nobody can steal from your bank.
+
+Use `/deposit <amount>` to move coins into your bank and `/withdraw <amount>` to pull them back out. The `/balance` command shows both values and a combined total.
+
+### Robbery & Shop Items
+
+Members can rob each other's **wallets** using `/rob`. To protect yourself, buy items from the shop:
+
+| Item | Price | What it does |
+|---|---|---|
+| **Rob Shield** | 🪙 500 | Automatically blocks the next robbery attempt against you. Consumed when triggered. Shows on `/balance`. |
+| **Lockpick** | 🪙 200 | Use `/rob lockpick:true` to bypass a target's Rob Shield. Consumed on use. |
+| **Spy** | 🪙 400 | Use `/spy <user>` to secretly check someone's wallet. Only you see the result. Consumed on use. |
+
+> **Bank coins are always safe.** Only wallet coins can be stolen. Deposit your coins when you're not actively using them.
+
+Getting caught robbing someone sends you to **jail** for 15–30 minutes — while jailed, all earning and gambling commands are locked.
+
+View the robbery leaderboard with `/roblb` to see the server's top robbers and most robbed members.
+
 ### Checking Your Balance
 
-- **`/balance`** — Your current coin count
-- **`/leaderboard`** — See where you rank on the server
+- **`/balance`** — Your wallet, bank, and total — plus a shield indicator if your Rob Shield is active
+- **`/leaderboard`** — See who has the most coins on the server
+- **`/roblb`** — See the top robbers and most robbed members
 
 ---
 
