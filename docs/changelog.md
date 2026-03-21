@@ -2,6 +2,32 @@
 
 ---
 
+## Session — March 21, 2026
+
+### `/highlow` — Stateless Game (Bot-Restart Proof)
+
+The High or Low game no longer stores active games in bot memory. The shown number and the player's user ID are now encoded directly into each button's ID, so the game survives bot restarts and deployments without any state loss. As a side effect, the game's buttons now only respond to the member who started it — other members cannot click your game.
+
+---
+
+### `/balance` — Removed User Lookup
+
+`/balance` no longer accepts a `@user` option. It now only shows your own wallet, bank, and total. Members who want to check someone else's wallet can use `/spy` (requires a Spy item from the shop).
+
+---
+
+### Shop Management — Restricted to Bot Owner
+
+`/shopedit` and `/shopremove` were previously gated on **Manage Guild** permission. Both are now restricted to the **bot owner only**, matching `/shopadd`. Only the bot owner can add, edit, or remove shop items.
+
+---
+
+### Owner-Only Check Hardened Across All Commands
+
+All bot-owner-restricted commands (`/coins`, `/addvoicetime`, `/shopadd`, `/shopedit`, `/shopremove`) previously used a live Discord API call to look up the application owner at runtime — which could silently fail. All five commands now use a hardcoded owner ID check that is instant and always reliable.
+
+---
+
 ## Session — March 20, 2026 (continued)
 
 ### Shop Price Adjustments
