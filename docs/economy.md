@@ -42,7 +42,7 @@ Your coins are split across two places:
 
 | Command | Description |
 |---|---|
-| `/balance [user]` | Check your wallet, bank, and total balance — also shows if you have a Rob Shield active |
+| `/balance` | Check your own wallet, bank, and total balance — also shows if you have a Rob Shield active |
 | `/deposit <amount>` | Move coins from your wallet into your bank |
 | `/withdraw <amount\|all>` | Move coins from your bank back to your wallet |
 | `/inventory [user]` | View your inventory, or another member's |
@@ -96,7 +96,7 @@ Your coins are split across two places:
 | Command | Description |
 |---|---|
 | `/cointoss <side> <bet>` | Bet on heads or tails — 50/50 chance |
-| `/highlow` | Guess whether the next number is higher or lower — match exactly for the jackpot |
+| `/highlow` | Guess whether the next number is higher or lower — match exactly for the jackpot. Only you can click your own game's buttons |
 | `/gamble <amount>` | Pure luck gamble — random multiplier applied to your bet |
 | `/slots <bet>` | Spin the slot machine |
 | `/blackjack <bet>` | Play a hand of blackjack against the dealer |
