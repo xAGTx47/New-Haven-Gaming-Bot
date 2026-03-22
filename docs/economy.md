@@ -29,7 +29,7 @@ Gathering commands produce items that sit in your inventory until you sell them.
 | `/hunt` | Hunt animals in the woods |
 | `/mine` | Mine for ores and gems |
 | `/sell <item>` | Sell a single gathered item for coins |
-| `/sellall` | Sell every gathered item in your inventory at once |
+| `/sellall` | Sell every gathered item (fish, hunt, and mine items) in your inventory at once |
 
 ---
 
@@ -38,7 +38,7 @@ Gathering commands produce items that sit in your inventory until you sell them.
 Your coins are split across two places:
 
 - **Wallet** — coins here are at risk of being stolen via `/rob`
-- **Bank** — coins here are completely safe from robbery
+- **Bank** — coins here are safe from robbery, but can be pulled out to cover a rob penalty if your wallet runs dry
 
 | Command | Description |
 |---|---|
@@ -48,7 +48,7 @@ Your coins are split across two places:
 | `/inventory [user]` | View your inventory, or another member's |
 | `/give <user> <amount>` | Send coins directly to another member |
 | `/giveitem <user> <item>` | Give an inventory item to another member |
-| `/leaderboard` | See who has the most coins on the server |
+| `/lbeconomy` | See who has the most total coins (wallet + bank combined) on the server |
 
 ---
 
@@ -75,19 +75,19 @@ Your coins are split across two places:
 
 | Command | Description |
 |---|---|
-| `/rob <user> [lockpick]` | Attempt to steal 100–500 coins from another member's **wallet** — 50/50 chance of success. Set `lockpick:true` to use a Lockpick and bypass their Rob Shield if they have one. |
+| `/rob <user> [lockpick]` | Attempt to steal coins from another member's **wallet**. Set `lockpick:true` to use a Lockpick and bypass their Rob Shield. |
 | `/spy <user>` | Secretly check someone's wallet balance (requires a **Spy** item — consumed on use). Only you can see the result. |
-| `/roblb` | View the robbery leaderboard — top robbers ranked by total coins stolen, and most robbed victims. |
+| `/roblb` | View the robbery leaderboard — top robbers with W/L record and success rate, plus most robbed victims. |
 
-### How robbery works
+### How Robbery Works
 
-1. **Target's wallet must have at least 100 coins** — bank coins are completely safe
+1. **Target's wallet must have at least 100 coins** — bank coins are completely safe from `/rob`
 2. **50% win / 50% fail:**
-   - **Win** → steal 100–500 coins from their wallet; victim is DM'd
-   - **Fail** → you pay the victim 100–300 coins in compensation, and you go to **jail** for 15–30 minutes
-3. **Rob Shield** — if the target has a Rob Shield in their inventory, it automatically blocks the rob and is consumed. You can bypass it by spending a **Lockpick** (`/rob lockpick:true`)
-4. **Jail** — while in jail you cannot use: `/rob`, `/crime`, `/bankrob`, `/work`, `/daily`, `/weekly`, `/monthly`, `/beg`, `/fish`, `/hunt`, `/mine`, `/sell`, `/sellall`, or any gambling command. `/balance`, `/deposit`, `/withdraw`, `/shop`, and `/buy` still work.
-5. **DM notifications** — the victim always receives a DM: when robbed, when their shield blocks an attempt, or when a robber fails and pays them
+   - **Win** → steal coins from their wallet; victim is DM'd
+   - **Fail** → you pay the victim a penalty. The penalty comes out of your **wallet first** — if your wallet doesn't cover it, the remainder is pulled from your **bank**. You go to **jail** for 15–30 minutes
+3. **Rob Shield** — if the target has a Rob Shield, it automatically blocks the rob and is consumed. Bypass it with a **Lockpick** (`/rob lockpick:true`)
+4. **Jail** — while in jail you cannot use: `/rob`, `/crime`, `/bankrob`, `/work`, `/daily`, `/weekly`, `/monthly`, `/beg`, `/fish`, `/hunt`, `/mine`, `/sell`, `/sellall`, or any gambling command. `/balance`, `/deposit`, `/withdraw`, `/shop`, and `/buy` still work
+5. **DM notifications** — the victim always receives a DM when robbed, when their shield blocks an attempt, or when a failed rob pays them compensation
 
 ---
 
