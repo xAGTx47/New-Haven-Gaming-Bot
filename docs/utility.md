@@ -2,7 +2,7 @@
 
 ![Utility Banner](images/utility-banner.png)
 
-Server information and member stat tracking.
+Server information, member stat tracking, and the XP leaderboard.
 
 ---
 
@@ -23,7 +23,18 @@ Server information and member stat tracking.
 |---|---|
 | `/serverinfo` | Display information about the server — member count, creation date, boosts, and more |
 | `/userinfo [user]` | Display detailed info about a member — join date, roles, and account age |
-| `/profile [user]` | View a member's full server profile — coins, reputation, voice time, voice level, messages sent, and invite count all in one embed |
+| `/profile [user]` | View a member's full server profile — **Level & XP** at the top, then coins, reputation, voice time, messages, and invite count |
+
+---
+
+## Levels & XP
+
+| Command | Description |
+|---|---|
+| `/rank [user]` | View a member's level, XP, rank on the server, and progress bar to the next level. Shows Server Booster bonus if applicable |
+| `/lbrank` | See the top 10 members sorted by XP — includes their level. Top 3 get medals |
+
+> See the [Levels & XP](levels.md) page for full details on how XP and levels work.
 
 ---
 
@@ -32,7 +43,7 @@ Server information and member stat tracking.
 | Command | Description |
 |---|---|
 | `/invites check [user]` | Check how many members a user has invited. Defaults to yourself |
-| `/invites leaderboard` | See the top inviters on the server |
+| `/lbinvite` | See the top inviters on the server |
 
 ---
 
@@ -41,7 +52,7 @@ Server information and member stat tracking.
 | Command | Description |
 |---|---|
 | `/messages check [user]` | Check how many messages a user has sent. Defaults to yourself |
-| `/messages leaderboard` | See who has sent the most messages on the server |
+| `/lbmsg` | See who has sent the most messages on the server |
 
 ---
 
@@ -49,8 +60,8 @@ Server information and member stat tracking.
 
 | Command | Description |
 |---|---|
-| `/voicetime check [user]` | Check a member's total time in voice channels and their current voice level. Defaults to yourself |
-| `/voicetime leaderboard` | See who has spent the most time in voice channels |
+| `/voicetime check [user]` | Check a member's total time in voice channels. Defaults to yourself |
+| `/lbvc` | See who has spent the most time in voice channels |
 
 > Weekly voice time resets every **Sunday at midnight Eastern Time** (automatically adjusts for daylight saving).
 
