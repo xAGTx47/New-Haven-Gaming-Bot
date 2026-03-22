@@ -240,3 +240,27 @@ Key merges:
 - **Starboard race condition fix** — processing lock prevents duplicate posts
 - **Voice time on restart** — elapsed VC time credited correctly on bot restart
 - **`/addvoicetime`** — bot owner command to manually grant voice time
+
+
+---
+
+## Session — March 22, 2026
+
+### `/spin` — Prize Wheel Command
+
+A new animated gambling command where the wheel physically spins and decelerates to a stop on the result segment.
+
+**Wheel distribution (11 segments):**
+
+| Segment | Count | Chance |
+|---|---|---|
+| 😢 LOSE | 5 | ~45% |
+| 2× | 4 | ~36% |
+| 10× | 1 | ~9% |
+| 20× | 1 | ~9% |
+
+**How it works:**
+- Each spin generates a **unique GIF** with the wheel stopping exactly on the winning segment
+- Deceleration is baked into the GIF using a cubic ease-out curve (~4.8 s animation)
+- Your mention appears above the embed; the result is posted as a plain channel message after the wheel stops
+- Wheel is brightly coloured with sad-face 😢 animations on LOSE segments
