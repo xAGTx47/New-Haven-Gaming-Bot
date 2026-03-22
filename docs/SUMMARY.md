@@ -2,6 +2,7 @@
 
 * [Getting Started](getting-started.md)
 * [💰 Economy](economy.md)
+* [⭐ Levels & XP](levels.md)
 * [🐾 Pets](pets.md)
 * [🎉 Fun](fun.md)
 * [🖼️ Images](images.md)
