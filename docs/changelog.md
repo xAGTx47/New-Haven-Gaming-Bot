@@ -2,6 +2,77 @@
 
 ---
 
+## v1.7.0 — March 22, 2026
+
+### Welcome System
+
+New members are now greeted with a two-message welcome sequence when they join:
+
+1. **GIF + ping** — the bot pings the `@Welcomer` role and posts the animated welcome GIF directly under the ping
+2. **Welcome embed** — a styled embed with the new member's username and avatar, a **Getting Started** section linking to Rules, Channels & Roles, Browse Channels, and Information, and a footer showing their member number (e.g. "You are the 74th member, Enjoy!")
+
+Fixed a bug where the welcome message was sent twice — caused by both the dev and production bots running simultaneously. The dev bot now stays stopped while the production bot is live.
+
+---
+
+## v1.6.0 — March 22, 2026
+
+### Level & XP System
+
+A full XP and level system has been added. Every message you send earns you XP, and the bot tracks your level based on total XP earned.
+
+**How it works:**
+- Each message grants **15–25 XP** (random) with a **60-second cooldown** — one grant per minute per user, preventing spam farming
+- **Server Boosters** earn a **+15% XP bonus** on every message, shown with the <:boosters:1481418598059737118> emoji
+- Level formula: `level = floor(sqrt(xp / 100))` — XP required scales quadratically so each level takes more effort
+- When you level up, the bot announces it in the channel you were chatting in
+
+**New commands:**
+- `/rank [user]` — shows your rank on the server, level, total XP, and a visual progress bar to the next level
+- `/lbrank` — top 10 XP leaderboard with medals for the top 3
+
+**Profile updated:**
+- `/profile` now shows a **Level & XP** section at the top with your level, XP, progress bar, and booster badge
+
+**Existing members:** All members with message history had their XP seeded automatically at 20 XP per message so nobody started from zero.
+
+---
+
+## v1.5.0 — March 22, 2026
+
+### Rob System Overhaul
+
+**Penalty now pulls from wallet first, then bank:**
+When a rob fails, the penalty used to always come from your wallet — if your wallet was empty you paid nothing. Now the penalty pulls from your wallet first, and if your wallet doesn't cover the full amount, the remainder is automatically pulled from your bank.
+
+**Embed field renamed:**
+The "Victim's Payout" field in the rob failure embed has been renamed to **Paid to Victim** and now shows the penalty amount you paid — not the victim's new wallet balance.
+
+**Rob stats moved to PostgreSQL:**
+Rob statistics (wins, losses, coins stolen, coins lost, times robbed) are now stored in the database instead of a JSON file. Stats persist properly across bot restarts and deployments.
+
+**`/roblb` updated:**
+The robbery leaderboard now shows each robber's **win/loss record** and **success rate** alongside their stats, and the Most Robbed section shows victims by number of times robbed.
+
+---
+
+## v1.4.0 — March 22, 2026
+
+### Leaderboard Command Renames
+
+All leaderboard subcommands have been promoted to standalone top-level commands for easier access:
+
+| Old Command | New Command |
+|---|---|
+| `/leaderboard` | `/lbeconomy` |
+| `/invites leaderboard` | `/lbinvite` |
+| `/messages leaderboard` | `/lbmsg` |
+| `/voicetime leaderboard` | `/lbvc` |
+
+The old subcommand format no longer works — use the new standalone commands.
+
+---
+
 ## Session — March 21, 2026
 
 ### `/highlow` — Stateless Game (Bot-Restart Proof)
@@ -65,14 +136,6 @@ The optional footer text field has been removed from the modal — the footer is
 
 ---
 
-## v2.0.0 — March 20, 2026
-
-The bot has been bumped to **version 2.0.0** to reflect the scale of changes made since launch. The command count grew from a loose collection of commands to a structured system of **89 slash commands**. Major systems added include a full economy overhaul (bank, robbery, jail, shop items), Custom Voice Channels (21 subcommands), pets, poker, horse racing, bank robbery, and a complete moderation suite. The music system was trialled and removed due to platform limitations.
-
-`/bot info` now shows **v2.0.0**.
-
----
-
 ## Session — March 20, 2026
 
 ### Jail System
@@ -110,19 +173,11 @@ A new `/roblb` command shows two leaderboards side-by-side:
 - **Top Robbers** — ranked by total coins stolen across all successful robs
 - **Most Robbed** — ranked by number of times successfully robbed
 
-Stats are tracked persistently in `data/robstats.json` and accumulate across bot restarts.
-
----
-
-### `/balance` — Rob Shield Indicator
-
-If you (or the user you're checking) have a **Rob Shield** in your inventory, `/balance` now shows **🛡️ Rob Shield active** next to your name in the embed.
-
 ---
 
 ### `/shopmove` — Reorder Shop Items
 
-A new `/shopmove <item> <position>` command lets staff move any shop item to a specific position in the list without having to remove and re-add it. Requires **Manage Server** permission.
+A new `/shopmove <item> <position>` command lets staff move any shop item to a specific position in the list without having to remove and re-add it.
 
 ---
 
@@ -130,7 +185,7 @@ A new `/shopmove <item> <position>` command lets staff move any shop item to a s
 
 Your coin balance is now split into two pockets:
 - **Wallet** — at risk from `/rob`
-- **Bank** — completely safe; thieves cannot touch it
+- **Bank** — completely safe; thieves cannot touch it directly
 
 Use `/deposit <amount>` to move coins into the bank and `/withdraw <amount|all>` to pull them back out. The `/balance` command shows both values plus a combined total.
 
@@ -156,168 +211,32 @@ See the [Custom Voice Channels](custom-vc.md) page for the full command referenc
 
 ### Voice Time — Weekly Reset Changed to Sunday Midnight EST
 
-The weekly voice time counter now resets every **Sunday at midnight Eastern Time**, replacing the old rolling 7-day window. The reset is DST-aware (adjusts automatically between EST and EDT).
-
----
-
-### `/vc invite` — Now Adds Member to Channel Permissions
-
-`/vc invite <user>` no longer generates a Discord invite URL. It now adds the specified member directly to the voice channel's Advanced Permissions (granting `ViewChannel` and `Connect`), identical to `/vc add`. The member is also saved to the guestlist so they retain access if the channel is set to private.
-
----
-
-### `/buy` — Custom VC Naming on Purchase
-
-When buying a **Custom VC** from the shop, members can now set the channel name directly in the buy command using the optional `channel-name` field. If skipped, the channel is named `username's VC`. The name can be changed any time with `/vc name`.
-
----
-
-### `/shopadd` — Position Option Added
-
-A new optional `position` field on `/shopadd` lets you place new items at a specific slot in the shop list rather than always appending to the end. Example: `position: 5` inserts the item at slot 5 and shifts everything else down.
-
----
-
-### `/vc setup` — Restricted to Bot Owner
-
-`/vc setup` was previously gated on **Manage Server** permission. It is now restricted to the **bot owner only**, preventing any server administrator from changing the VC category.
-
----
-
-### `/vc` — Public "No Custom VC" Error for Non-Owners
-
-Members who run any `/vc` command without owning a Custom VC now receive a public embed (visible to everyone in the channel) explaining they need to buy one. The embed shows the price, that no previous tier is required, and reminds them to use `/buy Custom VC` with an optional channel name.
-
-`/vc help`, `/vc host`, and `/vc setup` are unaffected — they work for anyone as before.
-
----
-
-### `/vc help` — Now Posts Publicly
-
-`/vc help` no longer sends an ephemeral (private) reply. The embed is now posted publicly so everyone in the channel can see it.
-
----
-
-### `/help` — Custom VC Added as First Category
-
-The **🔊 Custom VC** category has been added to the `/help` dropdown and placed first in the list. The full order is now: Custom VC → Economy → Pets → Fun → Images → Utility → Moderation.
-
----
-
-### Shop — Footer and Custom VC Description Updated
-
-- Footer wording corrected to "previous **item**" (was "previous tier")
-- Custom VC shop description now shows **No previous tier required.** in bold to make it clear it can be purchased at any time without unlocking prior tiers
+The weekly voice time counter now resets every **Sunday at midnight Eastern Time**, replacing the old rolling 7-day window. The reset is DST-aware.
 
 ---
 
 ## Session — March 18, 2026
 
-### Command Consolidation (Slash Command Slot Reduction)
+### Command Consolidation
 
-Discord limits bots to **100 slash commands**. This session focused on merging related commands under shared parent commands to free up space for future features. The bot went from **95 → 82 commands**, freeing **18 open slots**.
+Discord limits bots to **100 slash commands**. This session focused on merging related commands under shared parent commands. The bot went from **95 → 82 commands**.
 
----
+Key merges:
 
-### `/post` — Merged announcement commands
-
-**Replaces:** `/update`, `/announce`, `/botupdates`
-**Saves:** 2 command slots
-
-All three posting commands have been merged into a single `/post` command with subcommands. The full multi-step flow (channel picker → ping picker → modal) is unchanged for each type.
-
-| Old Command | New Command |
+| Old Commands | New Command |
 |---|---|
-| `/update` | `/post update` |
-| `/announce` | `/post announce` |
-| `/botupdates` | `/post botupdates` |
+| `/update`, `/announce`, `/botupdates` | `/post update/announce/botupdates` |
+| `/petshop`, `/adopt`, `/petstatus`, `/feed`, `/play`, `/petname`, `/release` | `/pet shop/adopt/status/feed/play/name/release` |
+| `/addcoins`, `/removecoins` | `/coins add/remove` |
+| `/warn`, `/warnings`, `/clearwarnings` | `/warn add/view/clear` |
+| `/botinfo`, `/ping`, `/uptime` | `/bot info/ping/uptime` |
 
-**Additional change:** `/post announce` now includes a 🔔 Get Announcement Pings role toggle button on posted embeds, matching the behaviour of `/post update` and `/post botupdates`.
+### Previous Sessions (Summary)
 
-> Existing role toggle buttons on previously posted embeds continue to work — no posts were broken.
-
----
-
-### `/pet` — Merged pet system commands
-
-**Replaces:** `/petshop`, `/adopt`, `/petstatus`, `/feed`, `/play`, `/petname`, `/release`
-**Saves:** 6 command slots
-
-All seven pet commands are now subcommands under `/pet`. All cooldowns, logic, and embeds are identical — only the names changed.
-
-| Old Command | New Command |
-|---|---|
-| `/petshop` | `/pet shop` |
-| `/adopt <pet>` | `/pet adopt <pet>` |
-| `/petstatus` | `/pet status` |
-| `/feed` | `/pet feed` |
-| `/play` | `/pet play` |
-| `/petname <name>` | `/pet name <name>` |
-| `/release` | `/pet release` |
-
----
-
-### `/coins` — Merged coin admin commands
-
-**Replaces:** `/addcoins`, `/removecoins`
-**Saves:** 1 command slot
-
-| Old Command | New Command | Permission |
-|---|---|---|
-| `/addcoins <user> <amount>` | `/coins add <user> <amount>` | Bot Owner only |
-| `/removecoins <user> <amount>` | `/coins remove <user> <amount>` | Bot Owner only |
-
-> `/coins remove` was also upgraded this session — it was previously ManageGuild permission and is now restricted to bot owner only, matching `/coins add`.
-
----
-
-### `/warn` — Merged warning commands
-
-**Replaces:** `/warn`, `/warnings`, `/clearwarnings`
-**Saves:** 2 command slots
-
-| Old Command | New Command | Permission |
-|---|---|---|
-| `/warn <user> <reason>` | `/warn add <user> <reason>` | Moderate Members |
-| `/warnings <user>` | `/warn view <user>` | Moderate Members |
-| `/clearwarnings <user>` | `/warn clear <user>` | Administrator |
-
----
-
-### `/bot` — Merged bot info commands
-
-**Replaces:** `/botinfo`, `/ping`, `/uptime`
-**Saves:** 2 command slots
-
-| Old Command | New Command |
-|---|---|
-| `/botinfo` | `/bot info` |
-| `/ping` | `/bot ping` |
-| `/uptime` | `/bot uptime` |
-
----
-
-### Bug Fix — Announcement ping button
-
-The `/post announce` command was missing the role toggle button that `/post update` and `/post botupdates` had. Added `🔔 Get Announcement Pings` button which toggles the Announcements ping role for the member who clicks it.
-
----
-
-## Previous Sessions (Summary)
-
-### Command Merges
-- `/invites check` + `/invites leaderboard` → `/invites check` + `/invites leaderboard` (merged subcommands)
-- `/messages check` + `/messages leaderboard` → merged subcommands
-- `/voicetime check` + `/voicetime leaderboard` → merged subcommands
-- `/rep check` + `/rep give` → merged subcommands
-- `/channel create` + `/channel delete` → merged with confirmation buttons
-- `/guess` — merged from separate `guessstart` / `guesstop` into a single `/guess` command
-
-### New Features Added
-- **Cockfight PvP mode** — optional `opponent` parameter sends an Accept/Deny challenge to a specific member with a 60-second timeout; coins transfer on resolution
-- **Texas Hold'em Poker** — full multiplayer poker with betting rounds, community cards, and a raise modal
-- **Horse racing** — four horses with different odds, animated live race in an embed
-- **Bank robbery** — multiplayer heist with crew joining via button, shared payout on success
-- **Starboard race condition fix** — processing lock prevents duplicate posts when multiple stars arrive simultaneously
-- **Voice time on restart** — elapsed VC time is credited correctly when the bot restarts mid-session (`reconcileVC`)
-- **`/addvoicetime`** — bot owner command to manually grant voice time to a member
+- **Cockfight PvP mode** — challenge a specific member with a 60-second accept/deny window
+- **Texas Hold'em Poker** — full multiplayer poker with betting rounds and community cards
+- **Horse racing** — four horses with different odds, animated live race
+- **Bank robbery** — multiplayer heist with crew joining via button, shared payout
+- **Starboard race condition fix** — processing lock prevents duplicate posts
+- **Voice time on restart** — elapsed VC time credited correctly on bot restart
+- **`/addvoicetime`** — bot owner command to manually grant voice time
