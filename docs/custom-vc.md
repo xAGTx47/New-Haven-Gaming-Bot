@@ -1,5 +1,7 @@
 # 🔊 Custom Voice Channels
 
+![Custom VC Banner](images/custom-vc-banner.png)
+
 Members can purchase a permanent custom voice channel from the server shop and manage it entirely using the `/vc` command. The channel stays even when everyone leaves — members only need to buy it once.
 
 ---
