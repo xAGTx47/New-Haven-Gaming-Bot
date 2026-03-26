@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — New Haven Gaming Bot</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #1a1a2e;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #16213e;
+      border-radius: 12px;
+      padding: 48px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .logo-icon {
+      width: 52px;
+      height: 52px;
+      background: #5865f2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .logo-text h1 { font-size: 22px; color: #fff; }
+    .logo-text p { font-size: 13px; color: #888; }
+    h2 {
+      font-size: 28px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .updated {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 32px;
+    }
+    h3 {
+      font-size: 16px;
+      color: #5865f2;
+      margin: 28px 0 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    p { line-height: 1.7; color: #bbb; margin-bottom: 10px; }
+    ul { padding-left: 20px; color: #bbb; line-height: 1.9; margin-bottom: 10px; }
+    hr { border: none; border-top: 1px solid #2a2a4a; margin: 36px 0; }
+    .footer { text-align: center; color: #555; font-size: 13px; margin-top: 40px; }
+    a { color: #5865f2; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+    }
+    .data-table th {
+      background: #0f3460;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 13px;
+    }
+    .data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #2a2a4a;
+      color: #bbb;
+      font-size: 14px;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <div class="logo-icon">🎮</div>
+      <div class="logo-text">
+        <h1>New Haven Gaming</h1>
+        <p>Discord Bot</p>
+      </div>
+    </div>
+
+    <h2>Privacy Policy</h2>
+    <p class="updated">Last updated: March 2026</p>
+
+    <p>This Privacy Policy explains what data the New Haven Gaming Discord bot collects, why it collects it, and how it is used. We take your privacy seriously and only store what is necessary for the Bot to function.</p>
+
+    <h3>1. What Data We Collect</h3>
+    <p>The Bot collects and stores only the following data, all within the context of your Discord server:</p>
+
+    <table class="data-table">
+      <tr>
+        <th>Data Type</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>Discord User ID</td>
+        <td>To identify users across economy, rep, pet, and message tracking systems</td>
+      </tr>
+      <tr>
+        <td>Discord Server (Guild) ID</td>
+        <td>To keep data isolated per server</td>
+      </tr>
+      <tr>
+        <td>Economy balances & inventory</td>
+        <td>To power the coin, shop, and item systems</td>
+      </tr>
+      <tr>
+        <td>Message count (total & weekly)</td>
+        <td>To track server activity for the message leaderboard</td>
+      </tr>
+      <tr>
+        <td>Pet data</td>
+        <td>To maintain pet stats, level, and mood between sessions</td>
+      </tr>
+      <tr>
+        <td>Reputation points</td>
+        <td>To track rep given between users</td>
+      </tr>
+      <tr>
+        <td>Invite counts</td>
+        <td>To track server invites per user</td>
+      </tr>
+      <tr>
+        <td>Voice time (total & weekly)</td>
+        <td>To track time spent in voice channels for the voice leaderboard</td>
+      </tr>
+      <tr>
+        <td>XP & level data</td>
+        <td>To power the leveling system and rank leaderboard</td>
+      </tr>
+      <tr>
+        <td>Moderation records (warnings)</td>
+        <td>To log and retrieve user warnings issued by moderators</td>
+      </tr>
+    </table>
+
+    <h3>2. What We Do Not Collect</h3>
+    <ul>
+      <li>Message content (beyond counting for activity tracking)</li>
+      <li>Usernames, profile pictures, or email addresses</li>
+      <li>Any data from direct messages</li>
+      <li>Any personally identifiable information beyond Discord IDs</li>
+    </ul>
+
+    <h3>3. How Data Is Stored</h3>
+    <p>All data is stored in a PostgreSQL database hosted on Neon. Data is not shared with any third parties, sold, or used for advertising purposes. Sensitive operations use atomic database transactions to ensure consistency.</p>
+
+    <h3>4. Data Retention</h3>
+    <p>Data is retained as long as the Bot is operational. Economy and activity data may be reset by server administrators at their discretion. If the Bot is removed from a server, data associated with that server is no longer actively used but may remain in storage.</p>
+
+    <h3>5. Third-Party Services</h3>
+    <p>The Bot may use the following external APIs to provide certain features:</p>
+    <ul>
+      <li><strong>NASA API</strong> — to fetch the Astronomy Picture of the Day for the <code>/images apod</code> command</li>
+      <li><strong>Tenor/Giphy</strong> — to fetch GIFs for reaction commands</li>
+      <li><strong>icanhazdadjoke API</strong> — for the <code>/fun dadjoke</code> command</li>
+    </ul>
+    <p>These services are accessed only when the relevant commands are used. No user data is sent to these services.</p>
+
+    <h3>6. Your Rights</h3>
+    <p>You may request deletion of your data at any time by contacting the bot owner through the New Haven Gaming Discord server. We will remove your data from all stored records upon a valid request.</p>
+
+    <h3>7. Changes to This Policy</h3>
+    <p>This Privacy Policy may be updated at any time. Continued use of the Bot following any changes constitutes acceptance of the updated policy.</p>
+
+    <h3>8. Contact</h3>
+    <p>For any privacy-related questions or data deletion requests, contact the bot owner through the New Haven Gaming Discord server.</p>
+
+    <hr />
+    <div class="footer">
+      New Haven Gaming Bot &nbsp;·&nbsp; <a href="/terms">Terms of Service</a>
+    </div>
+  </div>
+</body>
+</html>
