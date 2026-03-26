@@ -1,5 +1,7 @@
 # New Haven Gaming Bot — Changelog
 
+![Changelog Banner](images/changelog-banner.png)
+
 ---
 
 ## v1.9.0 — March 26, 2026
