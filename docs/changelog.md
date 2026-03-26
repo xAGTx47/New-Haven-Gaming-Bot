@@ -2,6 +2,52 @@
 
 ---
 
+## v1.9.0 — March 26, 2026
+
+### Private Bot Message Updated
+
+When someone adds the bot to an unauthorized server, the bot now sends a clearer DM to the server owner before leaving:
+
+- Updated message text to be friendlier and more direct
+- Includes a clickable link to the [Haven Gaming Server](https://discord.gg/QRy4vFh9R5) so owners know where to reach out
+- Footer notes that highlighted text is a hyperlink and can be clicked or tapped
+- Fixed a bug where both bot instances would send the DM — now only one message is sent per unauthorized join
+
+---
+
+## v1.8.0 — March 25, 2026
+
+### Full Database Migration (Neon PostgreSQL)
+
+All tracking systems have been migrated from local JSON files to a hosted PostgreSQL database on Neon. This means data now persists reliably across restarts, deployments, and is never at risk of being lost or overwritten.
+
+**What moved to the database:**
+
+| System | What's stored |
+|---|---|
+| Message tracking | Total and weekly message counts per user |
+| Invite tracking | Invite counts per user |
+| Voice time | Total and weekly voice time per user |
+
+All operations use atomic SQL so counts can never get out of sync even if two things happen at once.
+
+### Event Deduplication System
+
+A deduplication layer was added across all event-driven actions. When two bot instances are running simultaneously, each event (message counted, reminder fired, welcome sent, unauthorized join handled) is now claimed by exactly one instance — the other silently skips it. This eliminates all duplicate actions without requiring one bot to be manually stopped.
+
+**Covered events:**
+
+- Message counts (each message ID is claimed once)
+- Reminders (each reminder fires exactly once at the correct time)
+- Welcome messages (new member join handled by one instance)
+- Unauthorized server joins (private bot DM sent once)
+
+### Reminder Reliability Fix
+
+Daily, weekly, and monthly reminders (`/daily`, `/weekly`, `/monthly`) now properly save to the database before the command response is sent. Previously, a bot restart between the command being run and the reminder firing could silently drop the reminder entirely.
+
+---
+
 ## v1.7.0 — March 22, 2026
 
 ### Welcome System
@@ -240,27 +286,3 @@ Key merges:
 - **Starboard race condition fix** — processing lock prevents duplicate posts
 - **Voice time on restart** — elapsed VC time credited correctly on bot restart
 - **`/addvoicetime`** — bot owner command to manually grant voice time
-
-
----
-
-## Session — March 22, 2026
-
-### `/spin` — Prize Wheel Command
-
-A new animated gambling command where the wheel physically spins and decelerates to a stop on the result segment.
-
-**Wheel distribution (11 segments):**
-
-| Segment | Count | Chance |
-|---|---|---|
-| 😢 LOSE | 5 | ~45% |
-| 2× | 4 | ~36% |
-| 10× | 1 | ~9% |
-| 20× | 1 | ~9% |
-
-**How it works:**
-- Each spin generates a **unique GIF** with the wheel stopping exactly on the winning segment
-- Deceleration is baked into the GIF using a cubic ease-out curve (~4.8 s animation)
-- Your mention appears above the embed; the result is posted as a plain channel message after the wheel stops
-- Wheel is brightly coloured with sad-face 😢 animations on LOSE segments
