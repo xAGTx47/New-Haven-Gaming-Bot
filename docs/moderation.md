@@ -1,5 +1,7 @@
 # 🔨 Moderation Commands
 
+![Moderation Banner](images/moderation-banner.png)
+
 > These commands are only visible to members with the appropriate server permissions.
 
 ---
