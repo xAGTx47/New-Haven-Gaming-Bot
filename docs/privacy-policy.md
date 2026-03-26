@@ -1,5 +1,7 @@
 # 🔒 Privacy Policy
 
+![Privacy Policy Banner](images/privacy-banner.png)
+
 _Last updated: March 2026_
 
 This Privacy Policy explains what data the New Haven Gaming Discord bot collects, why it collects it, and how it is used. We take your privacy seriously and only store what is necessary for the Bot to function.
