@@ -1,5 +1,7 @@
 # 📋 Terms of Service
 
+![Terms of Service Banner](images/terms-banner.png)
+
 _Last updated: March 2026_
 
 By inviting or using the New Haven Gaming Discord bot ("the Bot"), you agree to these Terms of Service. If you do not agree, do not use the Bot.
