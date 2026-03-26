@@ -44,7 +44,7 @@ Your coins are split across two places:
 |---|---|
 | `/balance` | Check your own wallet, bank, and total balance — also shows if you have a Rob Shield active |
 | `/deposit <amount>` | Move coins from your wallet into your bank |
-| `/withdraw <amount|all>` | Move coins from your bank back to your wallet |
+| `/withdraw <amount\|all>` | Move coins from your bank back to your wallet |
 | `/inventory [user]` | View your inventory, or another member's |
 | `/give <user> <amount>` | Send coins directly to another member |
 | `/giveitem <user> <item>` | Give an inventory item to another member |
@@ -99,7 +99,6 @@ Your coins are split across two places:
 | `/highlow` | Guess whether the next number is higher or lower — match exactly for the jackpot. Only you can click your own game's buttons |
 | `/gamble <amount>` | Pure luck gamble — random multiplier applied to your bet |
 | `/slots <bet>` | Spin the slot machine |
-| `/spin <bet>` | Spin the prize wheel — decelerates and stops on your result. **11 segments:** 2× ×4 (36%), LOSE ×5 (45%), 10× ×1 (9%), 20× ×1 (9%) |
 | `/blackjack <bet>` | Play a hand of blackjack against the dealer |
 | `/cockfight <bet> [opponent]` | Enter your chicken in a fight. Leave opponent blank for a solo fight, or tag a member to challenge them directly — they must accept via button within 60 seconds |
 | `/horse <horse> <bet>` | Pick one of four horses and watch a live animated race. Higher odds = bigger payout |
