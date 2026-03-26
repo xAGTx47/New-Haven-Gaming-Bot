@@ -1,5 +1,7 @@
 # ⭐ Levels & XP
 
+![Levels Banner](images/levels-banner.png)
+
 The bot tracks XP for every message you send and rewards you with levels as you earn more. Server Boosters earn bonus XP on every message.
 
 ---
